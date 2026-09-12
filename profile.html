@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1020" />
   <meta name="description" content="Personal portfolio of Ashwini Kokkalki, Staff Software Engineer based in Leander, Texas." />
-  <title>Ashwini Kokkalki | Staff Software Engineer</title>
+  <title>Ashwini Kokkalki — Staff Software Engineer</title>
+
   <style>
     :root{
-      --bg:#f7f8fc;
-      --surface:#ffffff;
-      --surface-2:#f0f4ff;
-      --text:#152033;
+      --bg:#f7f8fb;
+      --ink:#101828;
       --muted:#667085;
-      --line:#e6eaf0;
-      --primary:#4169e1;
-      --primary-2:#6c63ff;
-      --accent:#14b8a6;
-      --shadow:0 18px 50px rgba(24,39,75,.10);
-      --radius:24px;
-      --max:1160px;
+      --line:#e7eaf0;
+      --card:rgba(255,255,255,.78);
+      --navy:#0b1020;
+      --blue:#4f6cff;
+      --violet:#8b5cf6;
+      --cyan:#2dd4bf;
+      --shadow:0 18px 50px rgba(20,30,55,.08);
+      --shadow-lg:0 32px 80px rgba(20,30,55,.16);
+      --radius:28px;
+      --max:1180px;
     }
 
     *{box-sizing:border-box}
@@ -26,421 +29,547 @@
     body{
       margin:0;
       font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
       background:
-        radial-gradient(circle at 10% 0%, rgba(65,105,225,.09), transparent 32%),
-        radial-gradient(circle at 90% 5%, rgba(20,184,166,.08), transparent 28%),
-        var(--bg);
-      color:var(--text);
+        radial-gradient(circle at 10% 0%, rgba(79,108,255,.10), transparent 28%),
+        radial-gradient(circle at 90% 8%, rgba(45,212,191,.08), transparent 24%),
+        linear-gradient(180deg,#fbfcff 0%,#f6f8fc 52%,#fbfcff 100%);
       line-height:1.6;
     }
 
-    a{color:inherit;text-decoration:none}
-    .container{width:min(calc(100% - 40px), var(--max)); margin-inline:auto}
+    a{text-decoration:none;color:inherit}
+    .wrap{width:min(calc(100% - 36px),var(--max));margin-inline:auto}
 
-    header{
-      position:sticky;
-      top:0;
-      z-index:20;
-      backdrop-filter:blur(16px);
-      background:rgba(247,248,252,.82);
-      border-bottom:1px solid rgba(230,234,240,.75);
+    /* NAV */
+    .nav-shell{
+      position:sticky; top:0; z-index:50;
+      padding:14px 0;
+      backdrop-filter:blur(18px);
+      background:rgba(247,248,251,.78);
+      border-bottom:1px solid rgba(231,234,240,.7);
     }
-
     .nav{
-      height:72px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
+      display:flex;align-items:center;justify-content:space-between;gap:24px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(255,255,255,.8);
+      box-shadow:0 10px 35px rgba(20,30,55,.06);
+      padding:11px 14px 11px 16px;
+      border-radius:20px;
     }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:800;
-      letter-spacing:-.02em;
-    }
-
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}
     .brand-mark{
-      width:38px;height:38px;border-radius:12px;
-      display:grid;place-items:center;
-      color:white;font-size:.9rem;font-weight:800;
-      background:linear-gradient(135deg,var(--primary),var(--primary-2));
-      box-shadow:0 8px 20px rgba(65,105,225,.25);
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;color:white;font-weight:900;
+      background:linear-gradient(135deg,var(--blue),var(--violet));
+      box-shadow:0 10px 24px rgba(79,108,255,.25);
+    }
+    .nav-links{display:flex;gap:24px;color:#475467;font-weight:700;font-size:.94rem}
+    .nav-links a{transition:.2s ease}
+    .nav-links a:hover{color:var(--blue)}
+    .nav-cta{
+      padding:10px 14px;border-radius:12px;
+      background:var(--navy);color:white;font-weight:800;font-size:.92rem;
     }
 
-    .nav-links{display:flex;gap:26px;color:var(--muted);font-weight:600;font-size:.95rem}
-    .nav-links a:hover{color:var(--text)}
-
-    .hero{
-      padding:96px 0 72px;
+    /* HERO */
+    .hero{padding:74px 0 66px}
+    .hero-grid{
       display:grid;
-      grid-template-columns:1.35fr .65fr;
-      gap:56px;
-      align-items:center;
+      grid-template-columns:1.18fr .82fr;
+      gap:42px;
+      align-items:stretch;
     }
 
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      color:var(--primary);
-      background:#edf1ff;
-      border:1px solid #dfe6ff;
-      padding:8px 12px;
-      border-radius:999px;
-      font-weight:800;
-      font-size:.82rem;
-      letter-spacing:.03em;
-      text-transform:uppercase;
+    .hero-copy{
+      background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,255,255,.66));
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:36px;
+      padding:54px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-copy:before{
+      content:"";
+      position:absolute;
+      width:240px;height:240px;border-radius:50%;
+      background:rgba(79,108,255,.09);
+      right:-80px;top:-95px;
+      filter:blur(1px);
     }
 
-    .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+    .status{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:9px 13px;border-radius:999px;
+      background:#f1f4ff;border:1px solid #e0e6ff;
+      color:#3f5ee8;font-size:.82rem;font-weight:900;
+      letter-spacing:.05em;text-transform:uppercase;
+      position:relative;z-index:2;
+    }
+    .status-dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 5px rgba(45,212,191,.12)}
 
     h1{
-      font-size:clamp(3.1rem, 7vw, 6.3rem);
-      line-height:.95;
-      letter-spacing:-.06em;
       margin:24px 0 22px;
-      max-width:840px;
+      font-size:clamp(3.35rem,7vw,6.9rem);
+      line-height:.92;
+      letter-spacing:-.065em;
+      max-width:850px;
+      position:relative;z-index:2;
     }
-
-    .hero p{
-      font-size:clamp(1.08rem,2vw,1.32rem);
+    .gradient-text{
+      background:linear-gradient(135deg,#1b2b56 5%,#4f6cff 52%,#8b5cf6 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .hero-copy p{
       color:var(--muted);
-      max-width:720px;
-      margin:0 0 30px;
+      font-size:clamp(1.06rem,1.8vw,1.25rem);
+      max-width:700px;margin:0 0 28px;
+      position:relative;z-index:2;
     }
-
-    .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
-
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:2}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:13px 18px;border-radius:14px;font-weight:800;
-      transition:.2s ease;border:1px solid var(--line);
+      min-height:48px;padding:0 18px;border-radius:14px;
+      font-weight:850;border:1px solid var(--line);
+      transition:.2s ease;
     }
-    .btn.primary{color:white;border-color:transparent;background:linear-gradient(135deg,var(--primary),var(--primary-2));box-shadow:0 12px 30px rgba(65,105,225,.24)}
-    .btn.secondary{background:var(--surface)}
     .btn:hover{transform:translateY(-2px)}
+    .btn-primary{
+      color:#fff;border-color:transparent;
+      background:linear-gradient(135deg,var(--blue),var(--violet));
+      box-shadow:0 14px 30px rgba(79,108,255,.24);
+    }
+    .btn-secondary{background:#fff}
 
-    .profile-card{
+    /* PROFILE VISUAL */
+    .profile-panel{
+      border-radius:36px;
+      padding:28px;
+      background:
+        radial-gradient(circle at 80% 15%, rgba(139,92,246,.45), transparent 28%),
+        radial-gradient(circle at 12% 85%, rgba(45,212,191,.22), transparent 24%),
+        linear-gradient(160deg,#0b1020 0%,#172345 58%,#1d2558 100%);
+      color:white;
+      box-shadow:var(--shadow-lg);
       position:relative;
       overflow:hidden;
-      min-height:430px;
-      border-radius:34px;
-      padding:34px;
-      background:linear-gradient(160deg,#13213a,#21375f 58%,#2b2e73);
-      color:white;
-      box-shadow:0 30px 80px rgba(20,31,58,.24);
+      min-height:100%;
     }
-
-    .profile-card:before,.profile-card:after{
-      content:""; position:absolute; border-radius:50%;
-      filter:blur(2px); opacity:.35;
+    .profile-panel:before{
+      content:"";position:absolute;inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:32px 32px;
+      mask-image:linear-gradient(to bottom,black,transparent 90%);
     }
-    .profile-card:before{width:230px;height:230px;background:#6c63ff;top:-80px;right:-70px}
-    .profile-card:after{width:180px;height:180px;background:#14b8a6;bottom:-75px;left:-60px}
-
-    .avatar{
+    .profile-top{
       position:relative;z-index:2;
-      width:110px;height:110px;border-radius:28px;
+      display:flex;align-items:flex-start;justify-content:space-between;gap:20px;
+    }
+    .avatar{
+      width:96px;height:96px;border-radius:28px;
       display:grid;place-items:center;
-      font-size:2.2rem;font-weight:900;letter-spacing:-.05em;
-      background:rgba(255,255,255,.13);
+      font-size:2rem;font-weight:950;
+      background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.08));
       border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(10px);
+    }
+    .mini-chip{
+      padding:8px 11px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
+      color:rgba(255,255,255,.82);
+      font-size:.8rem;font-weight:750;
+    }
+
+    .profile-main{position:relative;z-index:2;margin-top:78px}
+    .profile-main h2{margin:0;font-size:2.1rem;letter-spacing:-.04em}
+    .profile-main .role{margin-top:6px;color:rgba(255,255,255,.78);font-weight:700}
+    .profile-main .loc{margin-top:4px;color:rgba(255,255,255,.55);font-size:.95rem}
+
+    .stats{
+      position:relative;z-index:2;
+      margin-top:28px;
+      display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+    }
+    .stat{
+      padding:16px 12px;border-radius:18px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.1);
       backdrop-filter:blur(8px);
     }
+    .stat strong{display:block;font-size:1.2rem}
+    .stat span{display:block;margin-top:3px;color:rgba(255,255,255,.58);font-size:.78rem;line-height:1.3}
 
-    .profile-meta{position:relative;z-index:2;margin-top:92px}
-    .profile-meta h2{margin:0;font-size:1.85rem;letter-spacing:-.03em}
-    .profile-meta p{margin:7px 0;color:rgba(255,255,255,.72);font-size:1rem}
-    .profile-chip{
-      display:inline-flex;margin-top:14px;padding:8px 12px;border-radius:999px;
-      background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
-      font-weight:700;font-size:.88rem;
+    /* SECTION SHARED */
+    section.content{padding:34px 0 74px}
+    .section-title{
+      display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:end;
+      margin-bottom:28px;
     }
-
-    section{padding:36px 0 76px}
-    .section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:28px}
-    .section-head h2{margin:0;font-size:clamp(2rem,4vw,3.1rem);letter-spacing:-.045em}
-    .section-head p{margin:0;color:var(--muted);max-width:520px}
-
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-
-    .skill{
-      background:var(--surface);
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:24px;
-      box-shadow:0 8px 24px rgba(24,39,75,.04);
+    .kicker{
+      color:var(--blue);font-size:.78rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase
     }
-    .skill-icon{
+    .section-title h2{
+      margin:8px 0 0;font-size:clamp(2.2rem,4vw,3.35rem);letter-spacing:-.05em;line-height:1;
+    }
+    .section-title p{margin:0;color:var(--muted);max-width:520px;justify-self:end}
+
+    /* SKILLS */
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .skill-card{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:24px;
+      padding:26px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+      transition:.2s ease;
+    }
+    .skill-card:hover{transform:translateY(-4px);box-shadow:0 20px 45px rgba(20,30,55,.10)}
+    .skill-no{
       width:44px;height:44px;border-radius:14px;
       display:grid;place-items:center;
-      background:var(--surface-2);color:var(--primary);
-      font-weight:900;margin-bottom:18px;
+      font-size:.85rem;font-weight:900;
+      color:var(--blue);
+      background:linear-gradient(145deg,#eef2ff,#f7f5ff);
+      margin-bottom:18px;
     }
-    .skill h3{margin:0 0 6px;font-size:1.08rem}
-    .skill p{margin:0;color:var(--muted);font-size:.94rem}
+    .skill-card h3{margin:0 0 8px;font-size:1.08rem}
+    .skill-card p{margin:0;color:var(--muted);font-size:.94rem}
 
-    .timeline{
+    /* EXPERIENCE */
+    .experience-shell{
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(255,255,255,.9);
+      border-radius:30px;
+      padding:14px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+    }
+    .job{
       display:grid;
-      gap:16px;
-    }
-    .role{
-      display:grid;
-      grid-template-columns:180px 1fr;
-      gap:28px;
-      padding:26px;
-      border:1px solid var(--line);
-      background:var(--surface);
-      border-radius:22px;
-      box-shadow:0 8px 24px rgba(24,39,75,.04);
-    }
-    .role-date{color:var(--muted);font-weight:700;font-size:.93rem}
-    .role-main h3{margin:0 0 4px;font-size:1.25rem;letter-spacing:-.02em}
-    .role-company{font-weight:800;color:var(--primary);margin-bottom:5px}
-    .role-location{color:var(--muted);font-size:.95rem}
-
-    .education{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
-    }
-    .edu{
-      background:linear-gradient(180deg,#fff,#fbfcff);
-      border:1px solid var(--line);
-      border-radius:22px;
-      padding:26px;
-    }
-    .edu .label{font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-    .edu h3{margin:10px 0 4px;font-size:1.25rem}
-    .edu p{margin:0;color:var(--muted)}
-
-    .contact{
-      margin-top:24px;
-      background:linear-gradient(135deg,#17233b,#263f6d);
-      color:white;
-      border-radius:28px;
-      padding:38px;
-      display:flex;
+      grid-template-columns:190px 1fr auto;
+      gap:26px;
       align-items:center;
-      justify-content:space-between;
-      gap:28px;
-      overflow:hidden;
-      position:relative;
+      padding:24px 20px;
+      border-bottom:1px solid var(--line);
     }
-    .contact:after{
-      content:"";position:absolute;width:240px;height:240px;border-radius:50%;
-      background:rgba(108,99,255,.25);right:-70px;top:-90px;
+    .job:last-child{border-bottom:none}
+    .job-date{font-size:.9rem;color:var(--muted);font-weight:750}
+    .job h3{margin:0;font-size:1.18rem;letter-spacing:-.02em}
+    .company{margin-top:4px;color:var(--blue);font-weight:850}
+    .location{margin-top:4px;color:var(--muted);font-size:.91rem}
+    .badge{
+      padding:8px 10px;border-radius:999px;
+      background:#f8f9fc;border:1px solid var(--line);
+      color:#475467;font-size:.78rem;font-weight:800;
+      white-space:nowrap;
     }
-    .contact h2{margin:0 0 8px;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:-.04em;position:relative;z-index:2}
-    .contact p{margin:0;color:rgba(255,255,255,.72);position:relative;z-index:2}
-    .contact-actions{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:2}
-    .contact .btn{background:white;color:var(--text);border:none}
-    .contact .btn.ghost{background:rgba(255,255,255,.1);color:white;border:1px solid rgba(255,255,255,.18)}
+
+    /* EDUCATION */
+    .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .edu-card{
+      background:#fff;border:1px solid var(--line);
+      border-radius:26px;padding:28px;
+      box-shadow:var(--shadow);
+      position:relative;overflow:hidden;
+    }
+    .edu-card:after{
+      content:"";position:absolute;width:130px;height:130px;border-radius:50%;
+      background:rgba(79,108,255,.06);right:-50px;top:-50px;
+    }
+    .edu-label{font-size:.76rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:var(--cyan)}
+    .edu-card h3{margin:10px 0 5px;font-size:1.25rem;letter-spacing:-.02em}
+    .edu-card p{margin:0;color:var(--muted)}
+
+    /* CONTACT */
+    .contact-card{
+      margin-top:24px;
+      padding:40px;
+      border-radius:30px;
+      color:white;
+      background:
+        radial-gradient(circle at 88% 20%,rgba(139,92,246,.36),transparent 25%),
+        linear-gradient(135deg,#0c1225 0%,#182b54 65%,#27336d 100%);
+      display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;
+      box-shadow:var(--shadow-lg);
+    }
+    .contact-card h2{margin:0 0 8px;font-size:clamp(2rem,4vw,3rem);letter-spacing:-.05em}
+    .contact-card p{margin:0;color:rgba(255,255,255,.68)}
+    .contact-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .contact-actions .btn{background:#fff;color:var(--ink);border:none}
+    .contact-actions .ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.16)}
 
     footer{
-      padding:28px 0 40px;color:var(--muted);font-size:.9rem;
-      display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+      padding:30px 0 44px;
+      display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+      color:#98a2b3;font-size:.9rem;
     }
 
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;padding-top:66px}
-      .profile-card{min-height:330px}
-      .profile-meta{margin-top:58px}
-      .grid-3{grid-template-columns:1fr}
-      .education{grid-template-columns:1fr}
-      .role{grid-template-columns:1fr;gap:10px}
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr}
+      .section-title{grid-template-columns:1fr}
+      .section-title p{justify-self:start}
+      .skills-grid{grid-template-columns:1fr}
+      .edu-grid{grid-template-columns:1fr}
+      .job{grid-template-columns:1fr;gap:10px}
+      .badge{justify-self:start}
+      .contact-card{grid-template-columns:1fr}
     }
 
-    @media (max-width:640px){
-      .container{width:min(calc(100% - 28px), var(--max))}
+    @media (max-width:680px){
+      .wrap{width:min(calc(100% - 24px),var(--max))}
       .nav-links{display:none}
-      .hero{padding-bottom:42px}
-      h1{font-size:3.4rem}
-      .section-head{align-items:start;flex-direction:column}
-      .contact{align-items:flex-start;flex-direction:column;padding:28px}
+      .nav-cta{display:none}
+      .hero{padding-top:42px}
+      .hero-copy{padding:30px 24px}
+      h1{font-size:3.2rem}
+      .profile-panel{padding:24px}
+      .stats{grid-template-columns:1fr}
+      .contact-card{padding:28px 22px}
+      .hero-actions,.contact-actions{display:grid;grid-template-columns:1fr;width:100%}
       .btn{width:100%}
-      .hero-actions{display:grid;grid-template-columns:1fr;width:100%}
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#top" aria-label="Home">
-        <span class="brand-mark">AK</span>
-        <span>Ashwini Kokkalki</span>
-      </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
+  <div class="nav-shell">
+    <div class="wrap">
+      <nav class="nav">
+        <a class="brand" href="#top">
+          <span class="brand-mark">AK</span>
+          <span>Ashwini Kokkalki</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <a class="nav-cta" href="mailto:ashwini.kokkalki@gmail.com">Say hello</a>
       </nav>
     </div>
-  </header>
+  </div>
 
   <main id="top">
-    <div class="container">
+    <div class="wrap">
       <section class="hero">
-        <div>
-          <span class="eyebrow"><span class="dot"></span> Staff Software Engineer</span>
-          <h1>Building reliable software with quality at the core.</h1>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="status">
+              <span class="status-dot"></span>
+              Staff Software Engineer
+            </div>
+
+            <h1>
+              Engineering with
+              <span class="gradient-text">quality at the core.</span>
+            </h1>
+
+            <p>
+              I’m Ashwini Kokkalki, a Staff Software Engineer based in Leander, Texas.
+              My background spans software engineering, quality engineering, software testing,
+              and data engineering.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="mailto:ashwini.kokkalki@gmail.com">
+                Email me
+              </a>
+              <a class="btn btn-secondary"
+                 href="https://www.linkedin.com/in/ashwini-kokkalki-8a5299b9"
+                 target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
+            </div>
+          </div>
+
+          <aside class="profile-panel">
+            <div class="profile-top">
+              <div class="avatar">AK</div>
+              <span class="mini-chip">Leander, TX</span>
+            </div>
+
+            <div class="profile-main">
+              <h2>Ashwini Kokkalki</h2>
+              <div class="role">Staff Software Engineer</div>
+              <div class="loc">Texas, United States</div>
+            </div>
+
+            <div class="stats">
+              <div class="stat">
+                <strong>3+</strong>
+                <span>Years at Visa</span>
+              </div>
+              <div class="stat">
+                <strong>QA → SWE</strong>
+                <span>Career progression</span>
+              </div>
+              <div class="stat">
+                <strong>BE + DE</strong>
+                <span>Computer Science & Data Engineering</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="content" id="skills">
+        <div class="section-title">
+          <div>
+            <div class="kicker">Core strengths</div>
+            <h2>Skills & expertise</h2>
+          </div>
           <p>
-            I’m Ashwini Kokkalki, a Staff Software Engineer based in Leander, Texas,
-            with experience spanning software engineering, quality engineering,
-            software testing, and data engineering.
+            Strong foundations in software quality, testing discipline, and end-to-end software delivery.
           </p>
-          <div class="hero-actions">
-            <a class="btn primary" href="mailto:ashwini.kokkalki@gmail.com">Email me</a>
-            <a class="btn secondary" href="https://www.linkedin.com/in/ashwini-kokkalki-8a5299b9" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
-          </div>
         </div>
 
-        <aside class="profile-card" aria-label="Profile summary">
-          <div class="avatar" aria-hidden="true">AK</div>
-          <div class="profile-meta">
-            <h2>Ashwini Kokkalki</h2>
-            <p>Staff Software Engineer</p>
-            <p>Leander, Texas, United States</p>
-            <span class="profile-chip">Engineering · Quality · Data</span>
-          </div>
-        </aside>
-      </section>
-
-      <section id="skills">
-        <div class="section-head">
-          <div>
-            <span class="eyebrow">Core strengths</span>
-            <h2>Skills</h2>
-          </div>
-          <p>Focused on building dependable software through strong engineering and testing discipline.</p>
-        </div>
-        <div class="grid-3">
-          <article class="skill">
-            <div class="skill-icon">01</div>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-no">01</div>
             <h3>Software Testing Life Cycle</h3>
-            <p>Structured testing practices across the full STLC.</p>
+            <p>Structured testing practices across planning, design, execution, defect tracking, and closure.</p>
           </article>
-          <article class="skill">
-            <div class="skill-icon">02</div>
+
+          <article class="skill-card">
+            <div class="skill-no">02</div>
             <h3>Software Development Life Cycle</h3>
-            <p>Experience working across the SDLC in engineering environments.</p>
+            <p>Experience working across the lifecycle of software delivery in enterprise environments.</p>
           </article>
-          <article class="skill">
-            <div class="skill-icon">03</div>
+
+          <article class="skill-card">
+            <div class="skill-no">03</div>
             <h3>Software Testing</h3>
-            <p>Quality-focused testing and analysis across multiple organizations.</p>
+            <p>Hands-on background in quality assurance, test engineering, and software validation.</p>
           </article>
         </div>
       </section>
 
-      <section id="experience">
-        <div class="section-head">
+      <section class="content" id="experience">
+        <div class="section-title">
           <div>
-            <span class="eyebrow">Career</span>
+            <div class="kicker">Career journey</div>
             <h2>Experience</h2>
           </div>
-          <p>A career progression across software testing, quality engineering, and staff-level software engineering.</p>
+          <p>
+            A career path that evolved from software testing and quality assurance into staff-level software engineering.
+          </p>
         </div>
 
-        <div class="timeline">
-          <article class="role">
-            <div class="role-date">Jul 2023 — Present</div>
-            <div class="role-main">
+        <div class="experience-shell">
+          <article class="job">
+            <div class="job-date">Jul 2023 — Present</div>
+            <div>
               <h3>Staff Software Engineer</h3>
-              <div class="role-company">Visa</div>
-              <div class="role-location">Austin, Texas, United States</div>
+              <div class="company">Visa</div>
+              <div class="location">Austin, Texas, United States</div>
             </div>
+            <div class="badge">Current</div>
           </article>
 
-          <article class="role">
-            <div class="role-date">Jan 2023 — Jul 2023</div>
-            <div class="role-main">
+          <article class="job">
+            <div class="job-date">Jan 2023 — Jul 2023</div>
+            <div>
               <h3>Senior Quality Engineer</h3>
-              <div class="role-company">Visa</div>
-              <div class="role-location">Austin, Texas, United States</div>
+              <div class="company">Visa</div>
+              <div class="location">Austin, Texas, United States</div>
             </div>
+            <div class="badge">Quality Engineering</div>
           </article>
 
-          <article class="role">
-            <div class="role-date">Nov 2015 — Dec 2018</div>
-            <div class="role-main">
+          <article class="job">
+            <div class="job-date">Nov 2015 — Dec 2018</div>
+            <div>
               <h3>Quality Assurance Analyst</h3>
-              <div class="role-company">RevSpring</div>
-              <div class="role-location">Phoenix, Arizona, United States</div>
+              <div class="company">RevSpring</div>
+              <div class="location">Phoenix, Arizona, United States</div>
             </div>
+            <div class="badge">QA</div>
           </article>
 
-          <article class="role">
-            <div class="role-date">Jul 2015 — Nov 2015</div>
-            <div class="role-main">
+          <article class="job">
+            <div class="job-date">Jul 2015 — Nov 2015</div>
+            <div>
               <h3>Quality Assurance Analyst</h3>
-              <div class="role-company">CVS Health</div>
-              <div class="role-location">Scottsdale, Arizona, United States</div>
+              <div class="company">CVS Health</div>
+              <div class="location">Scottsdale, Arizona, United States</div>
             </div>
+            <div class="badge">QA</div>
           </article>
 
-          <article class="role">
-            <div class="role-date">Feb 2011 — May 2013</div>
-            <div class="role-main">
+          <article class="job">
+            <div class="job-date">Feb 2011 — May 2013</div>
+            <div>
               <h3>Quality Assurance Analyst</h3>
-              <div class="role-company">American Express</div>
-              <div class="role-location">Phoenix, Arizona, United States</div>
+              <div class="company">American Express</div>
+              <div class="location">Phoenix, Arizona, United States</div>
             </div>
+            <div class="badge">QA</div>
           </article>
 
-          <article class="role">
-            <div class="role-date">Mar 2010 — Jul 2010</div>
-            <div class="role-main">
+          <article class="job">
+            <div class="job-date">Mar 2010 — Jul 2010</div>
+            <div>
               <h3>Software Test Engineer</h3>
-              <div class="role-company">Mindtree</div>
-              <div class="role-location">Bengaluru, Karnataka, India</div>
+              <div class="company">Mindtree</div>
+              <div class="location">Bengaluru, Karnataka, India</div>
             </div>
+            <div class="badge">Testing</div>
           </article>
         </div>
       </section>
 
-      <section id="education">
-        <div class="section-head">
+      <section class="content" id="education">
+        <div class="section-title">
           <div>
-            <span class="eyebrow">Learning</span>
-            <h2>Education</h2>
+            <div class="kicker">Education</div>
+            <h2>Academic background</h2>
           </div>
-          <p>Formal education in computer science with additional study in data engineering.</p>
+          <p>
+            Formal education in computer science, complemented by focused training in data engineering.
+          </p>
         </div>
 
-        <div class="education">
-          <article class="edu">
-            <div class="label">Data Engineering</div>
+        <div class="edu-grid">
+          <article class="edu-card">
+            <div class="edu-label">Data Engineering</div>
             <h3>WeCloudData</h3>
             <p>Diploma of Education · February 2022 — August 2022</p>
           </article>
-          <article class="edu">
-            <div class="label">Computer Science</div>
+
+          <article class="edu-card">
+            <div class="edu-label">Computer Science</div>
             <h3>Gogte Institute of Technology, Belgaum</h3>
             <p>Bachelor of Engineering (BE), Computer Science</p>
           </article>
         </div>
 
-        <div class="contact" id="contact">
+        <div class="contact-card" id="contact">
           <div>
             <h2>Let’s connect.</h2>
-            <p>Reach out by email or connect with me on LinkedIn.</p>
+            <p>Open to professional conversations, networking, and collaboration.</p>
           </div>
+
           <div class="contact-actions">
-            <a class="btn" href="mailto:ashwini.kokkalki@gmail.com">ashwini.kokkalki@gmail.com</a>
-            <a class="btn ghost" href="https://www.linkedin.com/in/ashwini-kokkalki-8a5299b9" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="btn" href="mailto:ashwini.kokkalki@gmail.com">Email</a>
+            <a class="btn ghost"
+               href="https://www.linkedin.com/in/ashwini-kokkalki-8a5299b9"
+               target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
           </div>
         </div>
       </section>
 
       <footer>
         <span>© 2026 Ashwini Kokkalki</span>
-        <span>Designed as a single-file personal portfolio.</span>
+        <span>Staff Software Engineer · Leander, Texas</span>
       </footer>
     </div>
   </main>
